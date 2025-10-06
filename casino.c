@@ -76,7 +76,7 @@ int main (void) {
     get_info (&player);
 
     while (choice != 5) {
-        slow_print ("\n\n$$$ WELCOME TO ZHUN's CASINO $$$\n", 100);
+        slow_print ("\n\n$$$ WELCOME TO ZHUN's CASINO $$$\n", 50);
         puts("Enter 0 to go to Player Profile");
         puts("Enter 1 to play Black Jack");
         puts("Enter 2 to play Baccarat");
