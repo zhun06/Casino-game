@@ -21,7 +21,7 @@
 typedef struct { 
     char name[50];
     int age;
-    float balance;
+    double balance;
 } player_info;
 
 // Global variables
@@ -45,7 +45,7 @@ void deal_card (int hand[11], int current_card);
 int evaluate_blackjack (int hand[11]); // Evaluate black jack hand
 int evaluate_baccarat (int hand[11]); // Evaluate baccarat hand
 int evaluate_slots (wchar_t slot_machine[3][3]); // Evaluate slots; Lose = 0, Small prize = 1, Big win = 2
-float place_bet (player_info*); // Betting system
+double place_bet (player_info*); // Betting system
 void horse_move (int*, char); // Random horse moves
 
 // Visual effects
@@ -197,7 +197,7 @@ void black_jack(player_info *player) {
     printf("\npress enter to start");
     prompt();
 
-    float bet = place_bet(player);
+    double bet = place_bet(player);
     if (bet == 0) return;
 
     shuffle_deck();
@@ -314,7 +314,7 @@ void baccarat (player_info *player) {
         break;
     }
 
-    float bet = place_bet(player);
+    double bet = place_bet(player);
     if (bet == 0) return;
 
     shuffle_deck();
@@ -443,7 +443,7 @@ void slots (player_info *player) {
     
     slow_print("\n\033[0m=====SLOTS=====\033[0m\n", 50);
 
-    float bet = place_bet(player);
+    double bet = place_bet(player);
     if (bet == 0) return;
     
     for (int i = 0; i < 3; i++) { // Randomize slots
@@ -530,7 +530,7 @@ void horse_race (player_info *player) {
         break;
     }
     
-    float bet = place_bet(player);
+    double bet = place_bet(player);
     if (bet == 0) return;
     
     for (horse = 0; horse < HORSES; horse++) { // Print starting position
@@ -704,10 +704,10 @@ int evaluate_slots (wchar_t slot_machine[3][3]){
 }
 
 
-float place_bet (player_info *player) {
+double place_bet (player_info *player) {
     char input [50];
-    float money = 0;
-    float bet = 0;
+    double money = 0;
+    double bet = 0;
     while (1) {
         printf("\nEnter amount to bet (0 to exit): ");
         standard_input (input, sizeof(input));
@@ -861,7 +861,7 @@ void get_info (player_info *player) {
 }
 
 void manage_balance (player_info *player) {
-    char input[5] = "\0";
+    char input[50] = "\0";
     int choice = -1;
 
     while (choice != 2) {
